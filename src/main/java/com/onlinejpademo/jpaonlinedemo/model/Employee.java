@@ -20,4 +20,8 @@ public class Employee {
     private String city;
     private Double salary;
 
+    @ManyToOne
+    @JoinColumn(name="dept_id")
+    private Department department;
+
 }

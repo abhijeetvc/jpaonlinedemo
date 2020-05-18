@@ -5,10 +5,15 @@ import com.onlinejpademo.jpaonlinedemo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(value="/employee")
 public class EmployeeController {
 
     @Autowired
@@ -44,5 +49,10 @@ public class EmployeeController {
             @PathVariable String lastName){
         List<Employee> e=employeeRepository.findByFirstNameAndLastName(firstName,lastName);
         return e;
+    }
+
+    @GetMapping(value="/emp1")
+    public List<Map<String,Object>> getEmpAndDept(){
+        return employeeRepository.getJoinData();
     }
 }
