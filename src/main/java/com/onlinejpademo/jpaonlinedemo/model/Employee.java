@@ -1,5 +1,6 @@
 package com.onlinejpademo.jpaonlinedemo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ public class Employee {
     private String city;
     private Double salary;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="dept_id")
     private Department department;
